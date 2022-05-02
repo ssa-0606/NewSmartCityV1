@@ -14,16 +14,16 @@
     <item
         android:id="@+id/navigation_notifications"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="智慧党建" />
+        android:title="数据分析" />
 
     <item
         android:id="@+id/newsFragment"
-        android:icon="@android:drawable/ic_menu_crop"
+        android:icon="@drawable/news"
         android:title="新闻"/>
 
     <item
         android:id="@+id/userCenterFragment"
-        android:icon="@android:drawable/ic_menu_my_calendar"
+        android:icon="@drawable/personalcenter"
         android:title="个人中心"/>
 
 </menu>

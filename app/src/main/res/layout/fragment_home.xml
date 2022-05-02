@@ -7,6 +7,7 @@
     tools:context=".ui.home.HomeFragment">
 
     <LinearLayout
+        android:layout_marginBottom="140dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -50,6 +51,11 @@
                android:layout_height="wrap_content"
                app:tabMode="scrollable"
                android:id="@+id/main_tab"/>
+           <View
+               android:layout_marginTop="10dp"
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:background="#CDC2C2"/>
 
            <androidx.recyclerview.widget.RecyclerView
                android:layout_width="match_parent"

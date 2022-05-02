@@ -58,7 +58,7 @@ public class MyDataLoad {
         });
         return uCompletableFuture;
     }
-    //获取新闻分类、新闻列表数据
+    //获取新闻分类、新闻列表数据，老土写法
     public static CompletableFuture<List<MainNewsCategory>> getNews(String url,String url1){
         List<MainNewsCategory> newsCategories = new ArrayList<>();
         CompletableFuture<List<MainNewsCategory>> completableFuture  = CompletableFuture.supplyAsync(() -> {
@@ -82,6 +82,42 @@ public class MyDataLoad {
                 e.printStackTrace();
             }
             return newsCategories;
+        });
+        return completableFuture;
+    }
+    //获取新闻分类
+    public static CompletableFuture<List<MainNewsCategory>> getNewsCategory(String url){
+        List<MainNewsCategory> mainNewsCategories = new ArrayList<>();
+        CompletableFuture<List<MainNewsCategory>> completableFuture = CompletableFuture.supplyAsync(()->{
+            try {
+                String result = MyUtils.GET(url);
+                JsonArray rows = new JsonParser().parse(result).getAsJsonObject().getAsJsonArray("data");
+                for (JsonElement row : rows) {
+                    MainNewsCategory newsCategory = new Gson().fromJson(row, new TypeToken<MainNewsCategory>() {}.getType());
+                    mainNewsCategories.add(newsCategory);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return mainNewsCategories;
+        });
+        return completableFuture;
+    }
+    //获取新闻列表
+    public static CompletableFuture<List<MainNewsItem>> getNewsItem(String url){
+        List<MainNewsItem> mainNewsItems = new ArrayList<>();
+        CompletableFuture<List<MainNewsItem>> completableFuture = CompletableFuture.supplyAsync(()->{
+            try {
+                String result = MyUtils.GET(url);
+                JsonArray rows = new JsonParser().parse(result).getAsJsonObject().getAsJsonArray("rows");
+                for (JsonElement row : rows) {
+                    MainNewsItem newsItem = new Gson().fromJson(row, new TypeToken<MainNewsItem>() {}.getType());
+                    mainNewsItems.add(newsItem);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return mainNewsItems;
         });
         return completableFuture;
     }

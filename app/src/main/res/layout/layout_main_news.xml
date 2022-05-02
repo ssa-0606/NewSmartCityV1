@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,12 +47,13 @@
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:orientation="horizontal">
             <ImageView
+                android:layout_gravity="center_vertical"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_menu_send"
+                android:layout_height="20dp"
+                android:src="@drawable/comment"
                 android:layout_weight="1"/>
 
             <TextView
@@ -60,18 +62,28 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4"
                 android:id="@+id/main_news_comment"/>
+            <LinearLayout
+                android:layout_marginEnd="20dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="end"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_marginEnd="8dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/date"/>
+                <TextView
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
 
-            <ImageView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:src="@android:drawable/ic_menu_recent_history"
-                android:layout_weight="1"/>
-            <TextView
-                android:layout_gravity="center_vertical"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4"
-                android:id="@+id/main_news_publish"/>
+                    android:layout_height="wrap_content"
+                    android:id="@+id/main_news_publish"/>
+            </LinearLayout>
+
+
 
         </LinearLayout>
         <View
@@ -79,7 +91,6 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#CDC2C2"/>
-
     </LinearLayout>
 
 </LinearLayout>

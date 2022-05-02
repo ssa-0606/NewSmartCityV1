@@ -8,6 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -47,6 +49,13 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             Glide.with(itemView).load("http://124.93.196.45:10001"+serviceList.get(position).getImgUrl()).into(imageView);
         }
         textView.setText(serviceList.get(position).getServiceName());
+
+        imageView.setOnClickListener(view -> {
+            if(TextUtils.equals(serviceList.get(position).getServiceName(),"全部服务")){
+                NavController navController = Navigation.findNavController(itemView);
+                navController.navigate(R.id.action_navigation_home_to_navigation_dashboard);
+            }
+        });
 
     }
 

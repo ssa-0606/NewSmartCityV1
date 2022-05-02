@@ -11,6 +11,7 @@ import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,9 +44,30 @@ public class HomeFragment extends Fragment {
         View inflate = inflater.inflate(R.layout.fragment_home, container, false);
         //实例化各个组件
         initView(inflate);
+
+
+        //TabLayout 的 tab 中的监听事件 ，
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                homeViewModel.setNewsItems((Integer) tab.getTag());
+//                Log.d("TAG3333", "onTabSelected: "+tab.getTag());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+
         //通过liveData中的数据渲染组件
         //渲染轮播
-        homeViewModel.getLunBo().observe(requireActivity(),mainLunBos -> {
+        homeViewModel.getLunBo().observe(requireActivity(), mainLunBos -> {
             for (MainLunBo mainLunBo : mainLunBos) {
                 ImageView imageView = new ImageView(getContext());
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
@@ -63,13 +85,18 @@ public class HomeFragment extends Fragment {
             serviceRecycler.setLayoutManager(new GridLayoutManager(getContext(),5));
             serviceRecycler.setAdapter(new ServiceAdapter(R.layout.layout_main_service,show));
         });
-
+        //渲染新闻
         homeViewModel.getNewsCategory().observe(requireActivity(),mainNewsCategories -> {
             for (MainNewsCategory mainNewsCategory : mainNewsCategories) {
                 tabLayout.addTab(tabLayout.newTab().setText(mainNewsCategory.getName()).setTag(mainNewsCategory.getId()));
             }
+//            newsRecycler.setLayoutManager(new GridLayoutManager(getContext(),1));
+//            newsRecycler.setAdapter(new NewsAdapter(R.layout.layout_main_news,mainNewsCategories.get(0).getNewsItemList()));
+        });
+
+        homeViewModel.getNewsItem().observe(requireActivity(),mainNewsItems -> {
             newsRecycler.setLayoutManager(new GridLayoutManager(getContext(),1));
-            newsRecycler.setAdapter(new NewsAdapter(R.layout.layout_main_news,mainNewsCategories.get(0).getNewsItemList()));
+            newsRecycler.setAdapter(new NewsAdapter(R.layout.layout_main_news,mainNewsItems));
         });
 
 

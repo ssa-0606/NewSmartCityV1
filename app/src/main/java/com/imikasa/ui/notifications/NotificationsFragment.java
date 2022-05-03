@@ -1,12 +1,15 @@
 package com.imikasa.ui.notifications;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -53,7 +56,12 @@ public class NotificationsFragment extends Fragment {
             barChart.getAxisLeft().setAxisLineWidth(2);
             barChart.getXAxis().setAxisLineWidth(2);
             barChart.getDescription().setText("新闻点赞统计");
-            barChart.getDescription().setPosition(900,100);
+            WindowManager wm=(WindowManager)getActivity().getSystemService(Context.WINDOW_SERVICE);
+            DisplayMetrics dm = new DisplayMetrics();
+            wm.getDefaultDisplay().getMetrics(dm);
+            float x = dm.widthPixels / 2;
+
+            barChart.getDescription().setPosition(x,80);
             barChart.getDescription().setTextSize(20f);
             barChart.getLegend().setEnabled(false);
 

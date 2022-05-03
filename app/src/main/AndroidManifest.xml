@@ -13,6 +13,9 @@
         android:theme="@style/Theme.NewSmartCityV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".part.ParkActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.usercenter.activity.FeedActivity"
             android:exported="false" />
         <activity

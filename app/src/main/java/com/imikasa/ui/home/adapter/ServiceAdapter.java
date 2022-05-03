@@ -1,5 +1,6 @@
 package com.imikasa.ui.home.adapter;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +14,9 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.imikasa.MainActivity;
 import com.imikasa.R;
+import com.imikasa.part.ParkActivity;
 import com.imikasa.ui.home.pojo.MainService;
 
 import java.util.List;
@@ -54,9 +57,11 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
             if(TextUtils.equals(serviceList.get(position).getServiceName(),"全部服务")){
                 NavController navController = Navigation.findNavController(itemView);
                 navController.navigate(R.id.action_navigation_home_to_navigation_dashboard);
+            }else if(TextUtils.equals(serviceList.get(position).getServiceName(),"停哪儿")){
+                Intent intent = new Intent(itemView.getContext(), ParkActivity.class);
+                itemView.getContext().startActivity(intent);
             }
         });
-
     }
 
     @Override

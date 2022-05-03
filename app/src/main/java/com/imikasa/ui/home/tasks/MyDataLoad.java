@@ -1,5 +1,7 @@
 package com.imikasa.ui.home.tasks;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
@@ -11,6 +13,10 @@ import com.imikasa.ui.home.pojo.MainLunBo;
 import com.imikasa.ui.home.pojo.MainNewsCategory;
 import com.imikasa.ui.home.pojo.MainNewsItem;
 import com.imikasa.ui.home.pojo.MainService;
+import com.imikasa.ui.usercenter.pojo.UserInfo;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -118,6 +124,47 @@ public class MyDataLoad {
                 e.printStackTrace();
             }
             return mainNewsItems;
+        });
+        return completableFuture;
+    }
+
+
+    public static CompletableFuture<UserInfo> getUserInfo(String url,String token){
+        CompletableFuture<UserInfo> completableFuture = CompletableFuture.supplyAsync(() -> {
+            UserInfo userInfo;
+            try {
+                String result = MyUtils.GET_T(url, token);
+                int code = new JSONObject(result).getInt("code");
+                if(code == 200){
+                    JsonObject userJson = new JsonParser().parse(result).getAsJsonObject().getAsJsonObject("user");
+                    userInfo = new Gson().fromJson(userJson,new TypeToken<UserInfo>(){}.getType());
+                }else{
+                    userInfo = null;
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                userInfo = null;
+            }
+            return userInfo;
+        });
+        return completableFuture;
+    }
+
+
+    public static CompletableFuture<String> updateUser(String url,String token,String msg){
+        CompletableFuture<String> completableFuture = CompletableFuture.supplyAsync(()->{
+            try {
+                String result = MyUtils.PUT_T(url, msg, token);
+                int code = new JSONObject(result).getInt("code");
+                if(code == 200){
+                    return "修改成功";
+                }else{
+                    return "修改失败";
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+                return "修改失败";
+            }
         });
         return completableFuture;
     }

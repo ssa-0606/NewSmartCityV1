@@ -3,11 +3,212 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".ui.usercenter.UserCenterFragment">
 
-    <TextView
+    <LinearLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:orientation="horizontal"
+        android:id="@+id/user_center_layout">
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <androidx.cardview.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="45dp">
+                <ImageView
+                    android:src="@drawable/avatartemp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:id="@+id/user_center_avatar"/>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:paddingStart="20dp"
+                android:id="@+id/user_center_nick"/>
+            <LinearLayout
+                android:paddingStart="20dp"
+                android:paddingTop="8dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:gravity="center_vertical"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:textSize="18sp"
+                    android:id="@+id/user_center_userId"/>
+                <ImageView
+                    android:layout_gravity="center"
+                    android:src="@drawable/userid"
+                    android:layout_width="0dp"
+                    android:layout_height="30dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="20dp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:background="@color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hello" />
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/teal_700"/>
+        <LinearLayout
+            android:id="@+id/user_center_info"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/userinfo"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:text="个人信息"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/teal_700"/>
+        <LinearLayout
+            android:id="@+id/user_center_order"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/order"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:text="订单列表"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/teal_700"/>
+        <LinearLayout
+            android:id="@+id/user_center_change"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/changepwd"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:text="修改密码"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/teal_700"/>
+        <LinearLayout
+            android:id="@+id/user_center_feed"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="20dp"
+                android:src="@drawable/feed"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_gravity="center"
+                android:text="意见反馈"
+                android:layout_marginStart="10dp"
+                android:textColor="@color/black"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/teal_700"/>
+        <Button
+            android:id="@+id/user_center_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginTop="40dp"
+            android:text="退出登录"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="500dp"/>
+
+    </LinearLayout>
+
 
 </LinearLayout>

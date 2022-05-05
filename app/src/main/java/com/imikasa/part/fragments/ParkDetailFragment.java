@@ -4,6 +4,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -30,10 +32,17 @@ public class ParkDetailFragment extends Fragment {
     private TextView open;
     private TextView textView;
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.tool_park,menu);
+        menu.clear();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.layout_park_detail, container, false);
+        setHasOptionsMenu(true);
         ParkViewModel parkViewModel = new ViewModelProvider(requireActivity()).get(ParkViewModel.class);
         initView(inflate);
         parkViewModel.getParkLive().observe(requireActivity(),park -> {

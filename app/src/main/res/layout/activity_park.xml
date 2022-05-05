@@ -16,7 +16,7 @@
             android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="停车场"/>
+            android:id="@+id/park_tool_text"/>
 
     </androidx.appcompat.widget.Toolbar>
     <androidx.fragment.app.FragmentContainerView

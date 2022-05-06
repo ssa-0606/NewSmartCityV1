@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.imikasa.MainActivity;
 import com.imikasa.R;
+import com.imikasa.bus.BusActivity;
 import com.imikasa.part.ParkActivity;
 import com.imikasa.ui.home.pojo.MainService;
 
@@ -59,6 +60,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 navController.navigate(R.id.action_navigation_home_to_navigation_dashboard);
             }else if(TextUtils.equals(serviceList.get(position).getServiceName(),"停哪儿")){
                 Intent intent = new Intent(itemView.getContext(), ParkActivity.class);
+                itemView.getContext().startActivity(intent);
+            }else if(TextUtils.equals(serviceList.get(position).getServiceName(),"智慧巴士")){
+                Intent intent = new Intent(itemView.getContext(), BusActivity.class);
                 itemView.getContext().startActivity(intent);
             }
         });

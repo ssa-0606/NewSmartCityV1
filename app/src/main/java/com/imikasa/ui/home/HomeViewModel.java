@@ -30,7 +30,9 @@ public class HomeViewModel extends ViewModel {
         newsItems = new MutableLiveData<>();
 
         CompletableFuture<List<MainLunBo>> lunBo = MyDataLoad.getLunBo("http://124.93.196.45:10001/prod-api/api/rotation/list?type=2");
-        lunBo.thenAccept(lunbos::postValue);
+        lunBo.thenAccept(mainLunBos -> {
+            lunbos.postValue(mainLunBos);
+        });
         CompletableFuture<List<MainService>> service = MyDataLoad.getService("http://124.93.196.45:10001/prod-api/api/service/list");
         service.thenAccept(services::postValue);
 //        CompletableFuture<List<MainNewsCategory>> newsCategory = MyDataLoad.getNews("http://124.93.196.45:10001/prod-api/press/category/list", "http://124.93.196.45:10001/prod-api/press/press/list?type=");

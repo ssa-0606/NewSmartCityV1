@@ -5,9 +5,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelStoreOwner;
@@ -16,6 +18,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imikasa.R;
 import com.imikasa.bus.BusViewModel;
+import com.imikasa.bus.fragments.BusInfoFragment;
+import com.imikasa.bus.fragments.BusListFragment;
 import com.imikasa.bus.pojo.BusLine;
 
 import java.util.List;
@@ -44,6 +48,7 @@ public class BusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         BusLine busLine = busLinesList.get(position);
         View itemView = holder.itemView;
+
         TextView lineName = itemView.findViewById(R.id.bus_list_line_name);lineName.setText(busLine.getName());
         TextView lineFirst = itemView.findViewById(R.id.bus_list_line_first);lineFirst.setText(busLine.getFirst());
         TextView lineEnd = itemView.findViewById(R.id.bus_list_line_end);lineEnd.setText(busLine.getEnd());
@@ -52,6 +57,19 @@ public class BusListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
         TextView pay = itemView.findViewById(R.id.bus_list_line_money);pay.setText("票价:"+String.valueOf(busLine.getPrice()+"元"));
         TextView mileage = itemView.findViewById(R.id.bus_list_line_mileage);mileage.setText("全程"+busLine.getMileage()+"km");
         RecyclerView recyclerView = itemView.findViewById(R.id.bus_list_line_stations);
+        LinearLayout linearLayout = itemView.findViewById(R.id.bus_list_jump);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) itemView.getContext();
+                new ViewModelProvider(appCompatActivity).get(BusViewModel.class).setBusLineLiveDataDetail(String.valueOf(busLine.getId()));
+                new ViewModelProvider(appCompatActivity).get(BusViewModel.class).setBusStopLiveData(String.valueOf(busLine.getId()));
+                appCompatActivity.getSupportFragmentManager().beginTransaction()
+                        .add(R.id.bus_container, BusInfoFragment.class,null,"bus-info")
+                        .hide(appCompatActivity.getSupportFragmentManager().findFragmentByTag("bus-list"))
+                        .commit();
+            }
+        });
         if(current == position){
             recyclerView.setVisibility(View.VISIBLE);
         }else{

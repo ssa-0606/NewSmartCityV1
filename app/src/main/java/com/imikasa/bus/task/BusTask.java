@@ -5,6 +5,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.imikasa.bus.pojo.BusLine;
@@ -55,7 +56,20 @@ public class BusTask {
         return completableFuture;
     }
 
-
+    public static CompletableFuture<BusLine> getBusLineDetail(String url){
+        CompletableFuture<BusLine> completableFuture = CompletableFuture.supplyAsync(()->{
+            BusLine busLine = null;
+            try {
+                String result = MyUtils.GET(url);
+                JsonObject data = new JsonParser().parse(result).getAsJsonObject().getAsJsonObject("data");
+                busLine = new Gson().fromJson(data,new TypeToken<BusLine>(){}.getType());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return busLine;
+        });
+        return completableFuture;
+    }
 
 
 }

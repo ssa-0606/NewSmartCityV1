@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,6 +27,7 @@ public class BusInfoFragment extends Fragment {
     private TextView end;
     private TextView payMoney;
     private TextView mileage;
+    private Button btn;
 
     @Nullable
     @Override
@@ -47,6 +49,16 @@ public class BusInfoFragment extends Fragment {
             recyclerView.setAdapter(new BusStopAdapter(R.layout.layout_bus_stop_item,busStops));
         });
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .hide(getActivity().getSupportFragmentManager().findFragmentByTag("bus-info"))
+                        .add(R.id.bus_container,BusDataFragment.class,null,"bus-data")
+                        .commit();
+            }
+        });
+
 
         return inflate;
     }
@@ -59,6 +71,7 @@ public class BusInfoFragment extends Fragment {
         end = inflate.findViewById(R.id.bus_info_end);
         payMoney = inflate.findViewById(R.id.bus_info_pay);
         mileage = inflate.findViewById(R.id.bus_info_mileage);
+        btn = inflate.findViewById(R.id.bus_info_jump);
     }
 
 

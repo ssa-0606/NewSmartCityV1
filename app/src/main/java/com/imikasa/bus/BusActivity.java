@@ -29,6 +29,24 @@ public class BusActivity extends AppCompatActivity {
                             .hide(getSupportFragmentManager().findFragmentByTag("bus-info"))
                             .show(getSupportFragmentManager().findFragmentByTag("bus-list"))
                             .commit();
+                }else if (TextUtils.equals(textView.getText(),"乘车日期")){
+                    textView.setText("班车信息");
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(getSupportFragmentManager().findFragmentByTag("bus-data"))
+                            .show(getSupportFragmentManager().findFragmentByTag("bus-info"))
+                            .commit();
+                }else if(TextUtils.equals(textView.getText(),"用户信息")){
+                    textView.setText("乘车日期");
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(getSupportFragmentManager().findFragmentByTag("bus-user"))
+                            .show(getSupportFragmentManager().findFragmentByTag("bus-data"))
+                            .commit();
+                }else if(TextUtils.equals(textView.getText(),"提交订单")){
+                    textView.setText("用户信息");
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(getSupportFragmentManager().findFragmentByTag("bus-commit"))
+                            .show(getSupportFragmentManager().findFragmentByTag("bus-user"))
+                            .commit();
                 }
                 break;
         }
@@ -49,6 +67,5 @@ public class BusActivity extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.bus_container,BusListFragment.class,null,"bus-list")
                 .commit();
-
     }
 }

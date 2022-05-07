@@ -1,5 +1,7 @@
 package com.imikasa;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -17,6 +19,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPreferences = getSharedPreferences("data",0);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        boolean isFirst = sharedPreferences.getBoolean("isFirst", true);
+
+//        if(isFirst){
+//            Intent intent = new Intent(this,GruidActivity.class);
+//            startActivity(intent);
+//        }
 
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());

@@ -2,6 +2,7 @@ package com.imikasa.bus.fragments;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,8 +40,12 @@ public class BusCommitFragment extends Fragment {
         tool.setText("提交订单");
 
         busViewModel.getBusUserLiveData().observe(requireActivity(),userInfo -> {
-            username.setText(userInfo.getNickName());
-            phone.setText(userInfo.getPhonenumber());
+            if(userInfo==null){
+                username.setText("请先登录！！！");
+            }else{
+                username.setText(userInfo.getNickName());
+                phone.setText(userInfo.getPhonenumber());
+            }
         });
         start.setText(sharedPreferences.getString("bus-up","unKnow"));
         end.setText(sharedPreferences.getString("bus-down","unKnow"));
@@ -49,9 +54,13 @@ public class BusCommitFragment extends Fragment {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getContext(), "订单提交成功！", Toast.LENGTH_SHORT).show();
-                //api不完善，暂时放着
-                getActivity().finish();
+                if(TextUtils.equals(username.getText(),"请先登录！！！")){
+                    Toast.makeText(getContext(), "未登录，不可以提交订单", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(getContext(), "订单提交成功！", Toast.LENGTH_SHORT).show();
+                    //api不完善，暂时放着
+                    getActivity().finish();
+                }
             }
         });
 

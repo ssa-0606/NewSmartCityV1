@@ -11,12 +11,22 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginEnd="40dp"
         android:clickable="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_input_add" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="80dp"
+        android:text="立即进入"
         app:layout_constraintBottom_toBottomOf="@+id/radioGroup2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <RadioGroup
         android:id="@+id/radioGroup2"
@@ -25,9 +35,7 @@
         android:layout_marginBottom="40dp"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/viewPager2"
-        app:layout_constraintStart_toStartOf="@+id/viewPager2">
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <RadioButton
             android:id="@+id/radioButton2"
@@ -51,8 +59,10 @@
 
     </RadioGroup>
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager2"
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:contentDescription="@string/app_name" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@ package com.imikasa;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -22,12 +23,12 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = getSharedPreferences("data",0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        boolean isFirst = sharedPreferences.getBoolean("isFirst", true);
+        String isFirst = sharedPreferences.getString("ip", "k");
 
-//        if(isFirst){
-//            Intent intent = new Intent(this,GruidActivity.class);
-//            startActivity(intent);
-//        }
+        if(TextUtils.equals(isFirst,"k")){
+            Intent intent = new Intent(this,GruidActivity.class);
+            startActivity(intent);
+        }
 
 //        binding = ActivityMainBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());

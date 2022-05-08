@@ -22,7 +22,7 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV1/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_bus.xml" value="0.2" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_chage_pwd.xml" value="0.2875" />
-        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_gruid.xml" value="0.12" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_gruid.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_main.xml" value="0.2875" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_park.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_bus_data.xml" value="0.14" />
@@ -34,6 +34,7 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_user_commit.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_bus_list_item.xml" value="0.2" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_bus_stop_item.xml" value="0.16" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_dialog.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_main_service.xml" value="0.2875" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_park_detail.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_park_main_ite.xml" value="0.2" />

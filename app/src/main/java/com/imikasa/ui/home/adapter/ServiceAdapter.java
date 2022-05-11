@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.imikasa.MainActivity;
 import com.imikasa.R;
 import com.imikasa.bus.BusActivity;
+import com.imikasa.hospital.HospitalMainActivity;
 import com.imikasa.part.ParkActivity;
 import com.imikasa.ui.home.pojo.MainService;
 
@@ -63,6 +64,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 itemView.getContext().startActivity(intent);
             }else if(TextUtils.equals(serviceList.get(position).getServiceName(),"智慧巴士")){
                 Intent intent = new Intent(itemView.getContext(), BusActivity.class);
+                itemView.getContext().startActivity(intent);
+            }else if (TextUtils.equals(serviceList.get(position).getServiceName(),"门诊预约")){
+                Intent intent = new Intent(itemView.getContext(), HospitalMainActivity.class);
                 itemView.getContext().startActivity(intent);
             }
         });

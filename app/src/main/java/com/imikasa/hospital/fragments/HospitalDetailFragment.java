@@ -48,6 +48,16 @@ public class HospitalDetailFragment extends Fragment {
             jiesao.setText(Html.fromHtml(hospitalInfo.getBrief()));
         });
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .add(R.id.hospital_container,PatientFragment.class,null,"patient-show")
+                        .hide(getActivity().getSupportFragmentManager().findFragmentByTag("hospital-detail"))
+                        .commit();
+            }
+        });
+
         return inflate;
     }
 

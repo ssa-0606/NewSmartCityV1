@@ -9,6 +9,7 @@ public class UserInfo {
     private String phonenumber;
     private String sex;
     private String avatar;
+    private String idCard;
 
     public int getUserId() {
         return userId;
@@ -66,7 +67,15 @@ public class UserInfo {
         this.avatar = avatar;
     }
 
-    public UserInfo(int userId, String userName, String nickName, String email, String phonenumber, String sex, String avatar) {
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    public UserInfo(int userId, String userName, String nickName, String email, String phonenumber, String sex, String avatar, String idCard) {
         this.userId = userId;
         this.userName = userName;
         this.nickName = nickName;
@@ -74,5 +83,6 @@ public class UserInfo {
         this.phonenumber = phonenumber;
         this.sex = sex;
         this.avatar = avatar;
+        this.idCard = idCard;
     }
 }

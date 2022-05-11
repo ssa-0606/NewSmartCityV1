@@ -15,11 +15,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="请输入服务器ip"
+            android:text="124.93.196.45"
             android:id="@+id/dialog_ip"/>
         <EditText
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="10001"
             android:hint="请输入服务器端口"
             android:id="@+id/dialog_port"/>
         <Button

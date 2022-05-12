@@ -6,7 +6,7 @@ public class Patient {
     private String cardId;
     private String tel;
     private String sex;
-    private String birth;
+    private String birthday;
     private String address;
     private int userId;
 
@@ -50,12 +50,12 @@ public class Patient {
         this.sex = sex;
     }
 
-    public String getBirth() {
-        return birth;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setBirth(String birth) {
-        this.birth = birth;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
 
     public String getAddress() {
@@ -74,13 +74,13 @@ public class Patient {
         this.userId = userId;
     }
 
-    public Patient(int id, String name, String cardId, String tel, String sex, String birth, String address, int userId) {
+    public Patient(int id, String name, String cardId, String tel, String sex, String birthday, String address, int userId) {
         this.id = id;
         this.name = name;
         this.cardId = cardId;
         this.tel = tel;
         this.sex = sex;
-        this.birth = birth;
+        this.birthday = birthday;
         this.address = address;
         this.userId = userId;
     }

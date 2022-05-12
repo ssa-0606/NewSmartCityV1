@@ -3,12 +3,17 @@ package com.imikasa.hospital.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.imikasa.R;
+import com.imikasa.hospital.HospitalViewModel;
+import com.imikasa.hospital.fragments.PatientUpdateFragment;
 import com.imikasa.hospital.pojo.Patient;
 
 import java.util.List;
@@ -39,7 +44,19 @@ public class PatientAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
 
         TextView name = itemView.findViewById(R.id.patient_card_name);
         TextView id = itemView.findViewById(R.id.patient_card_id);
-
+        LinearLayout linearLayout = itemView.findViewById(R.id.patient_jump_change_update);
+        linearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) itemView.getContext();
+                appCompatActivity.getSupportFragmentManager().beginTransaction()
+                        .add(R.id.hospital_container, PatientUpdateFragment.class,null,"patient-update")
+                        .hide(appCompatActivity.getSupportFragmentManager().findFragmentByTag("patient-show"))
+                        .commit();
+                HospitalViewModel hospitalViewModel = new ViewModelProvider(appCompatActivity).get(HospitalViewModel.class);
+                hospitalViewModel.setPatientMutableLiveData(position);
+            }
+        });
         name.setText(patient.getName());
         id.setText(patient.getCardId());
     }

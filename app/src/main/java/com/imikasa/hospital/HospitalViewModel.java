@@ -1,6 +1,7 @@
 package com.imikasa.hospital;
 
 import android.app.Application;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -26,6 +27,7 @@ public class HospitalViewModel extends ViewModel {
     private final MutableLiveData<HospitalInfo> hospitalInfoMutableLiveData;
     private final MutableLiveData<UserInfo> userInfoMutableLiveData;
     private final MutableLiveData<List<Patient>> listPatientMutableLiveData;
+    private final MutableLiveData<Patient> patientMutableLiveData;
 
 
 
@@ -35,6 +37,7 @@ public class HospitalViewModel extends ViewModel {
         hospitalInfoMutableLiveData = new MutableLiveData<>();
         userInfoMutableLiveData = new MutableLiveData<>();
         listPatientMutableLiveData = new MutableLiveData<>();
+        patientMutableLiveData = new MutableLiveData<>();
         CompletableFuture<List<HospitalInfo>> info = HospitalTask.getInfo("http://124.93.196.45:10001/prod-api/api/hospital/hospital/list");
         info.thenAccept(hospitalInfoListLiveData::postValue);
     }
@@ -44,6 +47,7 @@ public class HospitalViewModel extends ViewModel {
     public MutableLiveData<HospitalInfo> getHospitalInfoMutableLiveData(){return hospitalInfoMutableLiveData;}
     public MutableLiveData<UserInfo> getUserInfoMutableLiveData(){return userInfoMutableLiveData;}
     public MutableLiveData<List<Patient>> getListPatientMutableLiveData(){return listPatientMutableLiveData;}
+    public MutableLiveData<Patient> getPatientMutableLiveData(){return patientMutableLiveData;}
 
     public void setHospitalLunBoListLiveData(int id){
         CompletableFuture<List<HospitalLunBo>> lunBo = HospitalTask.getLunBo("http://124.93.196.45:10001/prod-api/api/hospital/banner/list?hospitalId="+id);
@@ -63,6 +67,12 @@ public class HospitalViewModel extends ViewModel {
     public void setListPatientMutableLiveData(String token){
         CompletableFuture<List<Patient>> completableFuture = HospitalTask.getPatient("http://124.93.196.45:10001/prod-api/api/hospital/patient/list",token);
         completableFuture.thenAccept(listPatientMutableLiveData::postValue);
+    }
+
+    public void setPatientMutableLiveData(int id){
+        List<Patient> value = listPatientMutableLiveData.getValue();
+        patientMutableLiveData.setValue(value.get(id));
+        Log.d("TAG", "setPatientMutableLiveData: "+value.get(id).getName());
     }
 
 }

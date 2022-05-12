@@ -41,6 +41,12 @@ public class HospitalMainActivity extends AppCompatActivity {
                             .show(getSupportFragmentManager().findFragmentByTag("patient-show"))
                             .hide(getSupportFragmentManager().findFragmentByTag("patient-add"))
                             .commit();
+                }else if(TextUtils.equals(textView.getText(),"修改就诊人信息")){
+                    textView.setText("就诊人卡片");
+                    getSupportFragmentManager().beginTransaction()
+                            .show(getSupportFragmentManager().findFragmentByTag("patient-show"))
+                            .hide(getSupportFragmentManager().findFragmentByTag("patient-update"))
+                            .commit();
                 }
                 break;
         }

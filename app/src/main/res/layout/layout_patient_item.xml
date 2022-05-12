@@ -11,29 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/avatartemp"/>
-
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:id="@+id/patient_jump_change_update"
             android:layout_weight="1"
-            android:id="@+id/patient_card_name"
-            android:gravity="center"
-            android:textSize="23sp"/>
-        <TextView
-            android:layout_gravity="center"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:id="@+id/patient_card_id"
-            android:gravity="center"
-            android:textSize="23sp"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/avatartemp"/>
+
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/patient_card_name"
+                android:gravity="center"
+                android:textSize="23sp"/>
+            <TextView
+                android:layout_gravity="center"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:id="@+id/patient_card_id"
+                android:gravity="center"
+                android:textSize="23sp"/>
+
+        </LinearLayout>
+
 
         <TextView
             android:layout_width="wrap_content"

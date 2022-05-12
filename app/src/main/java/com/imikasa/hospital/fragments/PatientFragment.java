@@ -81,6 +81,19 @@ public class PatientFragment extends Fragment {
         return inflate;
     }
 
+
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        if(!hidden){
+            Log.d("TAG", "onHiddenChanged: 我执行了");
+            hospitalViewModel.setListPatientMutableLiveData(sharedPreferences.getString("token","k"));
+            hospitalViewModel.getListPatientMutableLiveData().observe(requireActivity(),patients -> {
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
+                recyclerView.setAdapter(new PatientAdapter(R.layout.layout_patient_item,patients));
+            });
+        }
+    }
+
     private void autoGen(String json) {
         Thread thread = new Thread(()->{
 

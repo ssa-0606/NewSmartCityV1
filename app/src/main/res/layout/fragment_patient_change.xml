@@ -108,9 +108,7 @@
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:ellipsize="end"
-                        android:maxLines="1"
+                        android:layout_weight="3"
                         android:id="@+id/patient_change_card"
                         android:gravity="end"
                         android:background="@null"/>
@@ -172,7 +170,7 @@
                     <EditText
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
+                        android:layout_weight="3"
                         android:id="@+id/patient_change_address"
                         android:gravity="end"
                         android:background="@null"/>

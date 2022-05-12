@@ -8,6 +8,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.imikasa.hospital.pojo.HospitalInfo;
 import com.imikasa.hospital.pojo.HospitalLunBo;
+import com.imikasa.hospital.pojo.Patient;
 import com.imikasa.tools.MyUtils;
 
 import java.io.IOException;
@@ -63,6 +64,25 @@ public class HospitalTask {
                 e.printStackTrace();
             }
             return info;
+        });
+        return completableFuture;
+    }
+
+
+    public static CompletableFuture<List<Patient>> getPatient(String url,String token){
+        CompletableFuture<List<Patient>> completableFuture = CompletableFuture.supplyAsync(()->{
+            List<Patient> patients = new ArrayList<>();
+            try {
+                String result = MyUtils.GET_T(url, token);
+                JsonArray rows = new JsonParser().parse(result).getAsJsonObject().getAsJsonArray("rows");
+                for (JsonElement row : rows) {
+                    Patient patient = new Gson().fromJson(row,new TypeToken<Patient>(){}.getType());
+                    patients.add(patient);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return patients;
         });
         return completableFuture;
     }

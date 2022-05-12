@@ -33,6 +33,14 @@ public class MyUtils {
         return okHttpClient.newCall(request).execute().body().string();
     }
 
+    public static String POST_T(String url ,String msg ,String token) throws IOException {
+        OkHttpClient client = new OkHttpClient();
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType,msg);
+        Request request = new Request.Builder().url(url).method("POST",body).addHeader("Content-Type","application/json").addHeader("Authorization",token).build();
+        return client.newCall(request).execute().body().string();
+    }
+
     public static String PUT_T(String url,String msg,String token) throws IOException {
         OkHttpClient client = new OkHttpClient();
         MediaType mediaType = MediaType.parse("application/json");

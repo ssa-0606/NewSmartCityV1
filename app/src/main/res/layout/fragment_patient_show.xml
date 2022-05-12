@@ -51,5 +51,6 @@
         android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:text="➕ 添加就诊人"
+        android:id="@+id/patient_jump_change_add"
         android:textSize="18sp"/>
 </LinearLayout>

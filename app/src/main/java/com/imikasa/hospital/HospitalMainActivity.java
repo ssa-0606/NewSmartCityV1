@@ -29,6 +29,18 @@ public class HospitalMainActivity extends AppCompatActivity {
                             .show(getSupportFragmentManager().findFragmentByTag("hospital-main"))
                             .hide(getSupportFragmentManager().findFragmentByTag("hospital-detail"))
                             .commit();
+                }else if (TextUtils.equals(textView.getText(),"就诊人卡片")){
+                    textView.setText("医院简介");
+                    getSupportFragmentManager().beginTransaction()
+                            .show(getSupportFragmentManager().findFragmentByTag("hospital-detail"))
+                            .hide(getSupportFragmentManager().findFragmentByTag("patient-show"))
+                            .commit();
+                }else if(TextUtils.equals(textView.getText(),"添加就诊人")){
+                    textView.setText("就诊人卡片");
+                    getSupportFragmentManager().beginTransaction()
+                            .show(getSupportFragmentManager().findFragmentByTag("patient-show"))
+                            .hide(getSupportFragmentManager().findFragmentByTag("patient-add"))
+                            .commit();
                 }
                 break;
         }

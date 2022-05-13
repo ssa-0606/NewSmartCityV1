@@ -18,6 +18,7 @@ import com.imikasa.MainActivity;
 import com.imikasa.R;
 import com.imikasa.bus.BusActivity;
 import com.imikasa.hospital.HospitalMainActivity;
+import com.imikasa.metro.MetroActivity;
 import com.imikasa.part.ParkActivity;
 import com.imikasa.ui.home.pojo.MainService;
 
@@ -67,6 +68,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 itemView.getContext().startActivity(intent);
             }else if (TextUtils.equals(serviceList.get(position).getServiceName(),"门诊预约")){
                 Intent intent = new Intent(itemView.getContext(), HospitalMainActivity.class);
+                itemView.getContext().startActivity(intent);
+            } else if(TextUtils.equals(serviceList.get(position).getServiceName(),"城市地铁")){
+                Intent intent = new Intent(itemView.getContext(), MetroActivity.class);
                 itemView.getContext().startActivity(intent);
             }
         });

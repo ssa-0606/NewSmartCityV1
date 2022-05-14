@@ -13,6 +13,9 @@
         android:theme="@style/Theme.NewSmartCityV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.MyActivityActivity"
+            android:exported="false" />
+        <activity
             android:name=".metro.MetroActivity"
             android:exported="false" />
         <activity

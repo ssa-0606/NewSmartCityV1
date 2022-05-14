@@ -27,8 +27,10 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_hospital_main.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_metro.xml" value="0.25052083333333336" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_my_activity.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_park.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_search.xml" value="0.1" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_bus_data.xml" value="0.14" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_bus_info.xml" value="0.2" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_bus_list.xml" value="0.18" />
@@ -41,6 +43,7 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_patient_change.xml" value="0.33" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_patient_show.xml" value="0.175" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_user_commit.xml" value="0.18" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_activity_item.xml" value="0.25" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_bus_list_item.xml" value="0.2" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_bus_stop_item.xml" value="0.16" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_dialog.xml" value="0.18" />

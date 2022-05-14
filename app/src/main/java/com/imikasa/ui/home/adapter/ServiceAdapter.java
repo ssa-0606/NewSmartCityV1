@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.imikasa.MainActivity;
 import com.imikasa.R;
+import com.imikasa.activity.MyActivityActivity;
 import com.imikasa.bus.BusActivity;
 import com.imikasa.hospital.HospitalMainActivity;
 import com.imikasa.metro.MetroActivity;
@@ -71,6 +72,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 itemView.getContext().startActivity(intent);
             } else if(TextUtils.equals(serviceList.get(position).getServiceName(),"城市地铁")){
                 Intent intent = new Intent(itemView.getContext(), MetroActivity.class);
+                itemView.getContext().startActivity(intent);
+            }else if (TextUtils.equals(serviceList.get(position).getServiceName(),"活动管理")){
+                Intent intent = new Intent(itemView.getContext(), MyActivityActivity.class);
                 itemView.getContext().startActivity(intent);
             }
         });

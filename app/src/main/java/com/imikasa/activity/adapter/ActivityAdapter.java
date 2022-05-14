@@ -4,13 +4,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.imikasa.R;
+import com.imikasa.activity.ActivityViewModel;
+import com.imikasa.activity.fragment.ActivityDetailFragment;
 import com.imikasa.activity.pojo.ActivityDetail;
 
 import java.util.List;
@@ -42,11 +47,24 @@ public class ActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         ImageView img = itemView.findViewById(R.id.activity_list_img);
         TextView sign = itemView.findViewById(R.id.activity_list_sign);
         TextView publish = itemView.findViewById(R.id.activity_list_publish);
+        LinearLayout layout = itemView.findViewById(R.id.activity_jump);
 
         name.setText(activityDetail.getName());
         Glide.with(itemView).load("http://124.93.196.45:10001"+activityDetail.getImgUrl()).into(img);
         sign.setText("已报名"+activityDetail.getSignupNum()+"人");
         publish.setText(activityDetail.getPublishTime());
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AppCompatActivity appCompatActivity = (AppCompatActivity) itemView.getContext();
+                ActivityViewModel activityViewModel = new ViewModelProvider(appCompatActivity).get(ActivityViewModel.class);
+                activityViewModel.setDetailMutableLiveData(activityDetail.getId());
+                appCompatActivity.getSupportFragmentManager().beginTransaction()
+                        .add(R.id.activity_contain, ActivityDetailFragment.class,null,"activity-detail")
+                        .hide(appCompatActivity.getSupportFragmentManager().findFragmentByTag("activity-main"))
+                        .commit();
+            }
+        });
     }
 
     @Override

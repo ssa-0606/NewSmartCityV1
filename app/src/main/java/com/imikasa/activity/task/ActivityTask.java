@@ -3,6 +3,7 @@ package com.imikasa.activity.task;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.imikasa.activity.pojo.ActivityCategory;
@@ -69,6 +70,22 @@ public class ActivityTask {
                 e.printStackTrace();
             }
             return activityDetails;
+        });
+        return completableFuture;
+    }
+
+    public static CompletableFuture<ActivityDetail> getDetail(String url){
+
+        CompletableFuture<ActivityDetail> completableFuture = CompletableFuture.supplyAsync(()->{
+            ActivityDetail activityDetail = null;
+            try {
+                String result = MyUtils.GET(url);
+                JsonObject data = new JsonParser().parse(result).getAsJsonObject().getAsJsonObject("data");
+                activityDetail = new Gson().fromJson(data,new TypeToken<ActivityDetail>(){}.getType());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return activityDetail;
         });
         return completableFuture;
     }

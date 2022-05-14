@@ -7,6 +7,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 import com.imikasa.activity.pojo.ActivityCategory;
+import com.imikasa.activity.pojo.ActivityComment;
 import com.imikasa.activity.pojo.ActivityDetail;
 import com.imikasa.activity.pojo.ActivityLunBo;
 import com.imikasa.tools.MyUtils;
@@ -86,6 +87,25 @@ public class ActivityTask {
                 e.printStackTrace();
             }
             return activityDetail;
+        });
+        return completableFuture;
+    }
+
+    public static CompletableFuture<List<ActivityComment>> getComment(String url){
+        List<ActivityComment> comment = new ArrayList<>();
+        CompletableFuture<List<ActivityComment>> completableFuture = CompletableFuture.supplyAsync(()->{
+
+            try {
+                String result = MyUtils.GET(url);
+                JsonArray rows = new JsonParser().parse(result).getAsJsonObject().getAsJsonArray("rows");
+                for (JsonElement row : rows) {
+                    ActivityComment activityComment = new Gson().fromJson(row,new TypeToken<ActivityComment>(){}.getType());
+                    comment.add(activityComment);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return comment;
         });
         return completableFuture;
     }

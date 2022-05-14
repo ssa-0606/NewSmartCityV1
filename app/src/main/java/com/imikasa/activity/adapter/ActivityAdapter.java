@@ -59,6 +59,7 @@ public class ActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
                 AppCompatActivity appCompatActivity = (AppCompatActivity) itemView.getContext();
                 ActivityViewModel activityViewModel = new ViewModelProvider(appCompatActivity).get(ActivityViewModel.class);
                 activityViewModel.setDetailMutableLiveData(activityDetail.getId());
+                activityViewModel.setCommentLiveData(activityDetail.getId());
                 appCompatActivity.getSupportFragmentManager().beginTransaction()
                         .add(R.id.activity_contain, ActivityDetailFragment.class,null,"activity-detail")
                         .hide(appCompatActivity.getSupportFragmentManager().findFragmentByTag("activity-main"))

@@ -6,11 +6,13 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.imikasa.R;
 import com.imikasa.metro.fragments.MetroLineFragment;
+import com.imikasa.metro.fragments.MetroPageFragment;
 
 public class MetroActivity extends AppCompatActivity {
     private  TextView textView;
@@ -27,9 +29,29 @@ public class MetroActivity extends AppCompatActivity {
                             .show(getSupportFragmentManager().findFragmentByTag("metro-lines"))
                             .hide(getSupportFragmentManager().findFragmentByTag("metro-detail"))
                             .commit();
+                }else if (TextUtils.equals(textView.getText(),"地铁总览图")){
+                    textView.setText("城市地铁");
+                    getSupportFragmentManager().beginTransaction()
+                            .show(getSupportFragmentManager().findFragmentByTag("metro-lines"))
+                            .hide(getSupportFragmentManager().findFragmentByTag("metro-page"))
+                            .commit();
                 }
                 break;
+            case R.id.metro_menu:
+                textView.setText("地铁总览图");
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.metro_contain, MetroPageFragment.class,null,"metro-page")
+                        .hide(getSupportFragmentManager().findFragmentByTag("metro-lines"))
+                        .commit();
+
+                break;
         }
+        return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.tool_metro,menu);
         return true;
     }
 

@@ -50,11 +50,14 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_main_service.xml" value="0.2875" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_metro_detail.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_metro_line.xml" value="0.22135416666666666" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_metro_page.xml" value="0.19947916666666668" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_metro_page_item.xml" value="0.36614583333333334" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_park_detail.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_park_main_ite.xml" value="0.2" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_park_record_item.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_patient_item.xml" value="0.26458333333333334" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/news_fragment.xml" value="0.2875" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/menu/tool_metro.xml" value="0.19947916666666668" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/menu/tool_park.xml" value="0.21" />
         <entry key="..\:/Users/Mikasa/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_list_item_1.xml" value="0.36614583333333334" />
       </map>

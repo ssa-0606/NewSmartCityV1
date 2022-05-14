@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/metro_menu" android:icon="@drawable/metro" android:title="总览图" app:showAsAction="always"/>
+
+</menu>

@@ -3,6 +3,8 @@ package com.imikasa.metro.fragments;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -24,6 +26,8 @@ public class MetroLineFragment extends Fragment {
     private Toolbar toolbar ;
     private TextView textView;
     private RecyclerView recyclerView;
+
+
 
     @Nullable
     @Override

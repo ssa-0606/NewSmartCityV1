@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
+import com.imikasa.metro.pojo.Line;
 import com.imikasa.metro.pojo.LineStation;
 import com.imikasa.metro.pojo.MetroLine;
 import com.imikasa.metro.pojo.MetroStation;
@@ -76,6 +77,25 @@ public class MetroTask {
                 e.printStackTrace();
             }
             return metroStation;
+        });
+        return completableFuture;
+    }
+
+
+    public static CompletableFuture<List<Line>> getLine(String url){
+        CompletableFuture<List<Line>> completableFuture = CompletableFuture.supplyAsync(()->{
+            List<Line> lines = new ArrayList<>();
+            try {
+                String result = MyUtils.GET(url);
+                JsonArray data = new JsonParser().parse(result).getAsJsonObject().getAsJsonArray("data");
+                for (JsonElement datum : data) {
+                    Line line = new Gson().fromJson(datum,new TypeToken<Line>(){}.getType());
+                    lines.add(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return lines;
         });
         return completableFuture;
     }

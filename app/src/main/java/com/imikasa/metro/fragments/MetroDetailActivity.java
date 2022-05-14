@@ -2,6 +2,8 @@ package com.imikasa.metro.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -27,13 +29,19 @@ public class MetroDetailActivity extends Fragment {
     private TextView distance;
     private RecyclerView recyclerView;
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        inflater.inflate(R.menu.tool_metro,menu);
+        menu.clear();
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View inflate = inflater.inflate(R.layout.layout_metro_detail, container, false);
         MetroViewModel metroViewModel = new ViewModelProvider(requireActivity()).get(MetroViewModel.class);
         initView(inflate);
-
+        setHasOptionsMenu(true);
         metroViewModel.getMetroStationMutableLiveData().observe(requireActivity(),metroStation -> {
 
             toolText.setText(metroStation.getName());

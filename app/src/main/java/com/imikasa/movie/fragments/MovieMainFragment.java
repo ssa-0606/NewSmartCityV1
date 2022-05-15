@@ -1,10 +1,12 @@
 package com.imikasa.movie.fragments;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +35,8 @@ public class MovieMainFragment extends Fragment {
     private ViewFlipper vf ;
     private RecyclerView recyclerView;
     private Button btn;
+    private EditText editText;
+    private Button search;
 
     @Nullable
     @Override
@@ -51,9 +55,16 @@ public class MovieMainFragment extends Fragment {
         });
         viewModel.getListDetailLiveData().observe(requireActivity(),movieDetails -> {
             List<MovieDetail> show = new ArrayList<>();
-            for (int i = 0; i < 5; i++) {
-                show.add(movieDetails.get(i));
+            if(movieDetails.size()>=5){
+                for (int i = 0; i < 5; i++) {
+                    show.add(movieDetails.get(i));
+                }
+            }else{
+                for (MovieDetail movieDetail : movieDetails) {
+                    show.add(movieDetail);
+                }
             }
+
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(),1));
             recyclerView.setAdapter(new MovieAdapter(R.layout.layout_movie_item,show));
         });
@@ -68,6 +79,17 @@ public class MovieMainFragment extends Fragment {
                 });
             }
         });
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(TextUtils.isEmpty(editText.getText())){
+                    Toast.makeText(getContext(), "输入不能为空", Toast.LENGTH_SHORT).show();
+                }else{
+                    String val = editText.getText().toString();
+                    viewModel.setListDetailLiveData(val);
+                }
+            }
+        });
         return inflate;
     }
 
@@ -76,5 +98,7 @@ public class MovieMainFragment extends Fragment {
         vf = inflate.findViewById(R.id.movie_vf);
         recyclerView = inflate.findViewById(R.id.movie_recycler);
         btn = inflate.findViewById(R.id.movie_show);
+        editText = inflate.findViewById(R.id.movie_search);
+        search = inflate.findViewById(R.id.movie_search_btn);
     }
 }

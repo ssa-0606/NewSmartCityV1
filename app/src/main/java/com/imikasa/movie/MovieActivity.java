@@ -25,6 +25,12 @@ public class MovieActivity extends AppCompatActivity {
             case android.R.id.home:
                 if(TextUtils.equals(textView.getText(),"看电影")){
                     finish();
+                }else if(TextUtils.equals(textView.getText(),"电影详情")){
+                    textView.setText("看电影");
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(getSupportFragmentManager().findFragmentByTag("movie-detail"))
+                            .show(getSupportFragmentManager().findFragmentByTag("movie-main"))
+                            .commit();
                 }
                 break;
         }

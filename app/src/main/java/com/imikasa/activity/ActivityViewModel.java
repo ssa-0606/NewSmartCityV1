@@ -19,6 +19,8 @@ public class ActivityViewModel extends ViewModel {
     private final MutableLiveData<List<ActivityDetail>> detailLiveData;
     private final MutableLiveData<ActivityDetail> detailMutableLiveData;
     private final MutableLiveData<List<ActivityComment>> commentLiveData;
+    private final MutableLiveData<List<ActivityDetail>> recommentLiveData;
+
 
     public ActivityViewModel() {
         lunBoLiveData = new MutableLiveData<>();
@@ -26,12 +28,15 @@ public class ActivityViewModel extends ViewModel {
         detailLiveData = new MutableLiveData<>();
         detailMutableLiveData = new MutableLiveData<>();
         commentLiveData = new MutableLiveData<>();
+        recommentLiveData = new MutableLiveData<>();
         CompletableFuture<List<ActivityLunBo>> lunBo = ActivityTask.getLunBo("http://124.93.196.45:10001/prod-api/api/activity/rotation/list");
         lunBo.thenAccept(lunBoLiveData::postValue);
         CompletableFuture<List<ActivityCategory>> category = ActivityTask.getCategory("http://124.93.196.45:10001/prod-api/api/activity/category/list");
         category.thenAccept(categoryLiveData::postValue);
         CompletableFuture<List<ActivityDetail>> detail = ActivityTask.getActivity("http://124.93.196.45:10001/prod-api/api/activity/activity/list?categoryId=1");
         detail.thenAccept(detailLiveData::postValue);
+        CompletableFuture<List<ActivityDetail>> recomment = ActivityTask.getActivity("http://124.93.196.45:10001/prod-api/api/activity/activity/list?pageSize=3&pageNum=1&recommend=Y");
+        recomment.thenAccept(recommentLiveData::postValue);
     }
 
     public MutableLiveData<List<ActivityLunBo>> getLunBoLiveData(){return lunBoLiveData;}
@@ -39,6 +44,7 @@ public class ActivityViewModel extends ViewModel {
     public MutableLiveData<List<ActivityDetail>> getDetailLiveData(){return detailLiveData;}
     public MutableLiveData<ActivityDetail> getDetailMutableLiveData(){return detailMutableLiveData;}
     public MutableLiveData<List<ActivityComment>> getCommentLiveData(){return commentLiveData;}
+    public MutableLiveData<List<ActivityDetail>> getRecommentLiveData(){return recommentLiveData;}
 
     public void setDetailLiveData(int id){
         CompletableFuture<List<ActivityDetail>> detail = ActivityTask.getActivity("http://124.93.196.45:10001/prod-api/api/activity/activity/list?categoryId="+id);

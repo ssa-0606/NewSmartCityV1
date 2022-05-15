@@ -41,7 +41,27 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/activity_detail_comment_list"/>
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="其他活动推荐"/>
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/activity_detail_recommend"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="10dp"
+            android:text="报名参加"
+            android:id="@+id/activity_detail_sign"/>
 
     </LinearLayout>
 

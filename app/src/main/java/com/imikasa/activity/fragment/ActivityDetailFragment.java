@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.imikasa.R;
 import com.imikasa.activity.ActivityViewModel;
+import com.imikasa.activity.adapter.ActivityAdapter;
 import com.imikasa.activity.adapter.ActivityCommentAdapter;
 import com.imikasa.tools.MyUtils;
 
@@ -40,6 +41,8 @@ public class ActivityDetailFragment extends Fragment {
     private SharedPreferences sharedPreferences;
     private SharedPreferences.Editor editor;
     ActivityViewModel activityViewModel;
+    private RecyclerView recommentRecycler;
+    private Button sign;
     private int id;
     @Nullable
     @Override
@@ -60,6 +63,10 @@ public class ActivityDetailFragment extends Fragment {
             commentRecycler.setLayoutManager(new GridLayoutManager(getContext(),1));
             commentRecycler.setAdapter(new ActivityCommentAdapter(R.layout.layout_comment,activityComments));
         });
+        activityViewModel.getRecommentLiveData().observe(requireActivity(),activityDetails -> {
+            recommentRecycler.setLayoutManager(new GridLayoutManager(getContext(),1));
+            recommentRecycler.setAdapter(new ActivityAdapter(R.layout.layout_activity_item,activityDetails));
+        });
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,8 +85,57 @@ public class ActivityDetailFragment extends Fragment {
                 }
             }
         });
+        sign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                check(id);
+            }
+        });
 
         return inflate;
+    }
+
+    private void check(int id) {
+        Thread thread = new Thread(()->{
+            try {
+                String result = MyUtils.GET_T("http://124.93.196.45:10001/prod-api/api/activity/signup/check?activityId=" + id, sharedPreferences.getString("token", "k"));
+                int code = new JSONObject(result).getInt("code");
+                if(code == 401){
+                    getActivity().runOnUiThread(()->{
+                        Toast.makeText(getContext(), "请先登录", Toast.LENGTH_SHORT).show();
+                    });
+                }else if(code == 200){
+                    boolean isSignup = new JSONObject(result).getBoolean("isSignup");
+                    if(isSignup){
+                        getActivity().runOnUiThread(()->{
+                            Toast.makeText(getContext(), "您已经报名过此活动了", Toast.LENGTH_SHORT).show();
+                        });
+                    }else{
+                        JSONObject jsonObject = new JSONObject();
+                        jsonObject.put("activityId",String.valueOf(id));
+                        doSign(jsonObject.toString());
+                    }
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
+    }
+
+    private void doSign(String toString) {
+        Thread thread = new Thread(()->{
+            try {
+                String result = MyUtils.POST_T("http://124.93.196.45:10001/prod-api/api/activity/signup", toString, sharedPreferences.getString("token", "k"));
+                int code = new JSONObject(result).getInt("code");
+                if(code == 200 ){
+                    getActivity().runOnUiThread(()-> Toast.makeText(getContext(), "报名成功", Toast.LENGTH_SHORT).show());
+                }
+            } catch (IOException | JSONException e) {
+                e.printStackTrace();
+            }
+        });
+        thread.start();
     }
 
     private void doSubmit(String json) {
@@ -114,5 +170,7 @@ public class ActivityDetailFragment extends Fragment {
         commentRecycler = inflate.findViewById(R.id.activity_detail_comment_list);
         submit = inflate.findViewById(R.id.activity_detail_btn);
         editText = inflate.findViewById(R.id.activity_detail_comment);
+        recommentRecycler = inflate.findViewById(R.id.activity_detail_recommend);
+        sign = inflate.findViewById(R.id.activity_detail_sign);
     }
 }

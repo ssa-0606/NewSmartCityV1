@@ -43,6 +43,17 @@ public class ActivityMainFragment extends Fragment {
             for (ActivityLunBo activityLunBo : activityLunBos) {
                 ImageView imageView = new ImageView(getContext());
                 imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        activityViewModel.setCommentLiveData(activityLunBo.getTargetId());
+                        activityViewModel.setDetailMutableLiveData(activityLunBo.getTargetId());
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .add(R.id.activity_contain,ActivityDetailFragment.class,null,"activity-detail")
+                                .hide(getActivity().getSupportFragmentManager().findFragmentByTag("activity-main"))
+                                .commit();
+                    }
+                });
                 Glide.with(getContext()).load("http://124.93.196.45:10001"+activityLunBo.getAdvImg()).into(imageView);
                 vf.addView(imageView);
             }

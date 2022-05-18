@@ -19,6 +19,7 @@ import com.imikasa.R;
 import com.imikasa.activity.MyActivityActivity;
 import com.imikasa.bus.BusActivity;
 import com.imikasa.hospital.HospitalMainActivity;
+import com.imikasa.house.HouseActivity;
 import com.imikasa.metro.MetroActivity;
 import com.imikasa.movie.MovieActivity;
 import com.imikasa.part.ParkActivity;
@@ -79,6 +80,9 @@ public class ServiceAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder
                 itemView.getContext().startActivity(intent);
             }else if (TextUtils.equals(serviceList.get(position).getServiceName(),"看电影")){
                 Intent intent = new Intent(itemView.getContext(), MovieActivity.class);
+                itemView.getContext().startActivity(intent);
+            }else if (TextUtils.equals(serviceList.get(position).getServiceName(),"找房子")){
+                Intent intent = new Intent(itemView.getContext(), HouseActivity.class);
                 itemView.getContext().startActivity(intent);
             }
         });

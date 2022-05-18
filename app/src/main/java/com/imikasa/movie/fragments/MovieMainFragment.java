@@ -30,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MovieMainFragment extends Fragment {
-    private MovieViewModel viewModel;
+    private MovieViewModel viewModel;                                                                                                                                                                                                 
     private TextView toolText;
     private ViewFlipper vf ;
     private RecyclerView recyclerView;

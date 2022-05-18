@@ -13,6 +13,9 @@
         android:theme="@style/Theme.NewSmartCityV1"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".house.HouseActivity"
+            android:exported="false" />
+        <activity
             android:name=".movie.MovieActivity"
             android:exported="false" />
         <activity

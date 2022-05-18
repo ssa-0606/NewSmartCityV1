@@ -25,6 +25,7 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_chage_pwd.xml" value="0.2875" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_gruid.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_hospital_main.xml" value="0.22" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_house.xml" value="0.16" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_main.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_metro.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/activity_movie.xml" value="0.2" />
@@ -39,6 +40,7 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_bus_user.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_hospital_detail.xml" value="0.175" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_hospital_main.xml" value="0.175" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_house_main.xml" value="0.22" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_metro_line.xml" value="0.25052083333333336" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_movie_detail.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/fragment_movie_main.xml" value="0.2" />
@@ -53,6 +55,7 @@
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_comment.xml" value="0.2" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_dialog.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_hospital_list.xml" value="0.1" />
+        <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_house_item.xml" value="0.18" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_lines.xml" value="0.22135416666666666" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_main_news.xml" value="0.175" />
         <entry key="..\:/Users/Mikasa/AndroidStudioProjects/NewSmartCityV2/app/src/main/res/layout/layout_main_service.xml" value="0.2875" />

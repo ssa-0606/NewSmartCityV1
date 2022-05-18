@@ -23,6 +23,12 @@ public class HouseActivity extends AppCompatActivity {
             case android.R.id.home:
                 if(TextUtils.equals(textView.getText(),"找房子")){
                     finish();
+                }else if (TextUtils.equals(textView.getText(),"详细信息")){
+                    textView.setText("找房子");
+                    getSupportFragmentManager().beginTransaction()
+                            .hide(getSupportFragmentManager().findFragmentByTag("house-detail"))
+                            .show(getSupportFragmentManager().findFragmentByTag("house-main"))
+                            .commit();
                 }
 
                 break;

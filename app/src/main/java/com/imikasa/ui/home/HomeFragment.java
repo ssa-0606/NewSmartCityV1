@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment {
         View inflate = inflater.inflate(R.layout.fragment_home, container, false);
         //实例化各个组件
         initView(inflate);
+
 
 
         //TabLayout 的 tab 中的监听事件 ，

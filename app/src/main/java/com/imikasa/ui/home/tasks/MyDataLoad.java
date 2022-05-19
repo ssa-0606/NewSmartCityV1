@@ -128,6 +128,23 @@ public class MyDataLoad {
         return completableFuture;
     }
 
+    public static CompletableFuture<MainNewsItem> getNews(String url){
+
+        CompletableFuture<MainNewsItem> completableFuture = CompletableFuture.supplyAsync(()->{
+            MainNewsItem mainNewsItem = null;
+            try {
+                String result = MyUtils.GET(url);
+                JsonObject data = new JsonParser().parse(result).getAsJsonObject().getAsJsonObject("data");
+                mainNewsItem = new Gson().fromJson(data,new TypeToken<MainNewsItem>(){}.getType());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return mainNewsItem;
+        });
+        return completableFuture;
+    }
+
 
     public static CompletableFuture<UserInfo> getUserInfo(String url,String token){
         CompletableFuture<UserInfo> completableFuture = CompletableFuture.supplyAsync(() -> {

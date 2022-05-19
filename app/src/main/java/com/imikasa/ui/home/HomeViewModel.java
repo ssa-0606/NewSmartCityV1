@@ -21,6 +21,7 @@ public class HomeViewModel extends ViewModel {
     private final MutableLiveData<List<MainService>> services;
     private final MutableLiveData<List<MainNewsCategory>> newsCategories;
     private final MutableLiveData<List<MainNewsItem>> newsItems;
+    private final MutableLiveData<MainNewsItem> newsItemMutableLiveData;
 
 
     public HomeViewModel() {
@@ -28,6 +29,7 @@ public class HomeViewModel extends ViewModel {
         services = new MutableLiveData<>();
         newsCategories = new MutableLiveData<>();
         newsItems = new MutableLiveData<>();
+        newsItemMutableLiveData = new MutableLiveData<>();
 
         CompletableFuture<List<MainLunBo>> lunBo = MyDataLoad.getLunBo("http://124.93.196.45:10001/prod-api/api/rotation/list?type=2");
         lunBo.thenAccept(mainLunBos -> {
@@ -56,10 +58,15 @@ public class HomeViewModel extends ViewModel {
     public LiveData<List<MainNewsItem>> getNewsItem(){
         return newsItems;
     }
+    public LiveData<MainNewsItem> getNewsItemMutableLiveData(){return newsItemMutableLiveData;}
 
     public void setNewsItems(int id){
         CompletableFuture<List<MainNewsItem>> newsItem = MyDataLoad.getNewsItem("http://124.93.196.45:10001/prod-api/press/press/list?type="+id);
         newsItem.thenAccept(newsItems::postValue);
+    }
+    public void setNewsItemMutableLiveData(int id){
+        CompletableFuture<MainNewsItem> mainNews = MyDataLoad.getNews("http://124.93.196.45:10001/prod-api/press/press/"+id);
+        mainNews.thenAccept(newsItemMutableLiveData::postValue);
     }
 
 }

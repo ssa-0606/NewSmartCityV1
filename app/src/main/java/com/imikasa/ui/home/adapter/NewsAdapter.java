@@ -1,5 +1,6 @@
 package com.imikasa.ui.home.adapter;
 
+import android.content.Intent;
 import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
@@ -7,13 +8,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.imikasa.R;
+import com.imikasa.ui.home.HomeViewModel;
+import com.imikasa.ui.home.NewsDetailActivity;
 import com.imikasa.ui.home.pojo.MainNewsItem;
 
 import java.util.List;
@@ -46,6 +52,7 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ImageView imageView = (ImageView) itemView.findViewById(R.id.main_news_img);
         TextView comment = (TextView) itemView.findViewById(R.id.main_news_comment);
         TextView publish = (TextView) itemView.findViewById(R.id.main_news_publish);
+        LinearLayout layout = (LinearLayout) itemView.findViewById(R.id.main_news_jump);
 
         MainNewsItem newsItem = newsItemList.get(position);
 
@@ -56,6 +63,15 @@ public class NewsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         Glide.with(itemView).load("http://124.93.196.45:10001"+newsItem.getCover()).into(imageView);
         comment.setText(String.valueOf(newsItem.getCommentNum()));
         publish.setText(newsItem.getPublishDate());
+
+        layout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(itemView.getContext(), NewsDetailActivity.class);
+                intent.putExtra("id",newsItem.getId());
+                itemView.getContext().startActivity(intent);
+            }
+        });
 
     }
 

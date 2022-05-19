@@ -12,6 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NewSmartCityV1"
         android:usesCleartextTraffic="true">
+        <activity android:name=".ui.home.NewsDetailActivity"
+            android:exported="false"/>
         <activity
             android:name=".house.HouseActivity"
             android:exported="false" />

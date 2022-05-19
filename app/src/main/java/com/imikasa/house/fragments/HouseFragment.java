@@ -24,7 +24,6 @@ import com.imikasa.R;
 import com.imikasa.house.HouseViewModel;
 import com.imikasa.house.adapter.HouseAdapter;
 
-import org.w3c.dom.Text;
 
 public class HouseFragment extends Fragment {
 
